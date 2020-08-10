@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registrazione</title>
+</head>
+<body>
+<form action="../Registrazione" method="get">
+Tipo: <input type="radio" id="Utente" name="Tipo" value="utente"onclick="myFunction()"checked>
+  <label for="utente">Utente</label>
+  <input type="radio" id="Autorita" name="Tipo" value="autorità" onclick="myFunction()">
+  <label for="autorità">autorità</label><br>
+<strong>Nome:</strong><input type="text" name="Nome"></br>
+<strong>Cognome:</strong> <input type="text" name="Cognome"></br>
+<strong id="cod/mat">Codice Fiscale: </strong><input type="text" name="co_fi/mat"></br> 
+<strong>Username:</strong> <input type="text" name="Username"></br>
+<strong>Pasword:</strong> <input type="password" name="Pasword"></br>
+<input type="submit" value="REGISTRATI">
+</form>
+<script type="text/javascript">
+function myFunction() {
+	 var type = document.getElementById("Utente");
+	 if (type.checked == true){
+		 document.getElementById("cod/mat").innerHTML = "";
+		 document.getElementById("cod/mat").innerHTML = "Codice Fiscale: "
+		 
+	 }else{
+		 document.getElementById("cod/mat").innerHTML = "";
+		 document.getElementById("cod/mat").innerHTML = "Matricola: ";
+	 }
+}
+</script>
+</body>
+</html>

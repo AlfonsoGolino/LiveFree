@@ -7,7 +7,8 @@ Nome varchar(20) not null,
 Cognome varchar(20) not null,
 CodiceFiscale char(16) primary key, 
 username varchar(20) not null,
-pasword varchar(10) not null);
+pasword varchar(10) not null
+);
 
 Create table Autorità(
 Matricola int(5) primary key,
