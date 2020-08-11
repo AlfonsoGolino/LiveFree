@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import java.sql.ResultSet;
+
 
 import ClassiComuni.Utente;
 
@@ -36,5 +38,24 @@ public class UtenteDaoImp implements ObjectDao {
 		
 	}
 	  
-	  
+	@Override
+	  public boolean recuperaDati(Object o) throws SQLException {
+		Utente u = (Utente) o;
+		String pass = u.getPasword();
+	    
+	    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from Utente "
+	        + "where username = ?;");
+	    prepared.setString(1, u.getUsername());
+	    ResultSet result = (ResultSet) prepared.executeQuery();
+	    while (result.next()) {
+	      u.setNome(result.getString("Nome"));
+	      u.setCognome(result.getString("Cognome"));
+	      u.setCodiceFiscale(result.getString("CodiceFiscale"));
+	      u.setPasword(result.getString("pasword"));
+	      if (u.getPasword().equals(pass)) {
+	        return true;
+	      }
+	    }
+	    return false;
+	  }
 }

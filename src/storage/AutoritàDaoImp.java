@@ -2,6 +2,7 @@ package storage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ClassiComuni.Autorit‡;
@@ -35,4 +36,24 @@ public class Autorit‡DaoImp implements ObjectDao {
 		
 	}
 	
+	@Override
+	  public boolean recuperaDati(Object o) throws SQLException {
+		Autorit‡ a = (Autorit‡) o;
+		String pass = a.getPasword();
+	    
+	    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from Autorit‡"
+	        + "where username = ?;");
+	    prepared.setString(1, a.getUsername());
+	    ResultSet result = (ResultSet) prepared.executeQuery();
+	    while (result.next()) {
+	      a.setNome(result.getString("Nome"));
+	      a.setCognome(result.getString("Cognome"));
+	      a.setMatricola(result.getString("Matricola"));
+	      a.setPasword(result.getString("pasword"));
+	      if (a.getPasword().equals(pass)) {
+	        return true;
+	      }
+	    }
+	    return false;
+	  }
 }
