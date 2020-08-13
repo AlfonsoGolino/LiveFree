@@ -11,9 +11,9 @@ pasword varchar(10) not null
 );
 
 Create table Autorita(
-Matricola int(5) primary key,
 Nome varchar(20) not null,
 Cognome varchar(20) not null, 
+Matricola char(16) primary key, 
 username varchar(20) not null,
 pasword varchar(10) not null
 );
@@ -23,7 +23,7 @@ IDSegnalazione varchar(20) primary key,
 Indirizzo varchar(20) not null,
 Foto varchar(20)not null,
 DroneInviato boolean not null,
-matricola int(5),
+matricola char(16),
 codiceFiscale char(16),
 foreign key(matricola)
 	references Autorita(Matricola)

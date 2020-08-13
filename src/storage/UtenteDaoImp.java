@@ -3,6 +3,8 @@ package storage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import java.sql.ResultSet;
 
@@ -66,5 +68,23 @@ public class UtenteDaoImp implements ObjectDao {
 	      }
 	    }
 	    return false;
+	  }
+
+	@Override
+	public ArrayList<Object> recuperaTutto() throws NumberFormatException, SQLException {
+	    ArrayList<Object> listaU = new ArrayList<>(); 
+	    
+	    Statement query = (Statement) con.createStatement();
+	    ResultSet result = (ResultSet) query.executeQuery("select * from Utente;");
+	    while (result.next()) {
+	      Utente u = new Utente(null, null, null, null, null);
+	      u.setNome(result.getString("Nome"));
+	      u.setCognome(result.getString("Cognome"));
+	      u.setCodiceFiscale(result.getString("CodiceFiscale"));
+	      u.setUsername(result.getString("username"));
+	      u.setPasword(result.getString("pasword"));
+	      listaU.add(u);
+	    }
+	    return listaU;
 	  }
 }

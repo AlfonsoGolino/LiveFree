@@ -16,9 +16,9 @@ Modifica Autorità
 <strong>Nome:</strong><input type="text" name="Nome"  value="<%=request.getAttribute("Nome") %>"></br>
 <strong>Cognome:</strong> <input type="text" name="Cognome"  value="<%=request.getAttribute("Cognome") %>"></br>
 <%if(session.getAttribute("tipo").equals("utente")){%>
-<strong>Codice Fiscale: </strong><input type="text" name="CodiceFiscale"  value="<%=request.getAttribute("CodiceFiscale") %>" disabled></br>
+<strong>Codice Fiscale: </strong><input type="text" name="C"  value="<%=request.getAttribute("CodiceFiscale") %>" readonly></br>
 <%}else{%>
-<strong>Matricola: </strong><input type="text" name="Matricola"  value="<%=request.getAttribute("Matricola") %>" disabled></br>
+<strong>Matricola: </strong><input type="text" name="M"  value="<%=request.getAttribute("Matricola") %>" readonly></br>
 <%} %>
 <strong>Username:</strong> <input type="text" name="user"  value="<%=request.getAttribute("Username") %>"></br>
 <strong>Pasword:</strong> <input type="password" name="Pasword"  value="<%=request.getAttribute("Password") %>"></br>

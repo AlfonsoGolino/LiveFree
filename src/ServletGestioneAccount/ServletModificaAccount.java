@@ -35,12 +35,12 @@ public class ServletModificaAccount extends HttpServlet {
 		    }
 		    GestioneUtente u = new ImpGestioneUtente();
 		    if(tipo.equals("utente")) {
-		    	String codiceFiscale = request.getParameter("CodiceFiscale");
+		    	String codiceFiscale = request.getParameter("C");
 		    	u.modificaAccount(tipo, nome, cognome, codiceFiscale, us, password);
 		    	RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 			     view.forward(request, response);
 		    }else {
-		    	String matricola = request.getParameter("Matricola");
+		    	String matricola = request.getParameter("M");
 		    	u.modificaAccount(tipo, nome, cognome,matricola, us, password);
 		    	RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 			     view.forward(request, response);

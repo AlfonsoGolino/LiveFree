@@ -9,14 +9,23 @@
 <body>
 <%if(session.getAttribute("tipo").equals("utente")){%>
 Account utente
-<%}else{%>
-Account Autorità
-<%} %>
 <form action="Logout" method="get">
 <input type="submit" value="Logout">
 </form>
 <a  href="FormModifca.html" title="Modifica Account">
 <button type="button">Modifica Account</button>
 </a>
+<a  href="FormSelezionaAutorità.html" title="Inserisci Segnalazione">
+<button type="button">Inserisci segnalazione</button>
+</a>
+<%}else{%>
+Account Autorità
+<form action="Logout" method="get">
+<input type="submit" value="Logout">
+</form>
+<a  href="FormModifca.html" title="Modifica Account">
+<button type="button">Modifica Account</button>
+</a>
+<%} %>
 </body>
 </html>

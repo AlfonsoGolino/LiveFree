@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import ClassiComuni.Autorit‡;
 
@@ -51,19 +53,37 @@ public class Autorit‡DaoImp implements ObjectDao {
 		Autorit‡ a = (Autorit‡) o;
 		String pass = a.getPasword();
 	    
-	    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from Autorita"
-	        + "where username = ?;");
-	    prepared.setString(1, a.getUsername());
-	    ResultSet result = (ResultSet) prepared.executeQuery();
+		 PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from Autorita "
+			        + "where username = ?;");
+		    prepared.setString(1, a.getUsername());
+		    ResultSet result = (ResultSet) prepared.executeQuery();
+		    while (result.next()) {
+		      a.setNome(result.getString("Nome"));
+		      a.setCognome(result.getString("Cognome"));
+		      a.setMatricola(result.getString("Matricola"));
+		      a.setPasword(result.getString("pasword"));
+		      if (a.getPasword().equals(pass)) {
+		        return true;
+		      }
+		    }
+		    return false;
+		  }
+
+
+	public ArrayList<Object> recuperaTutto() throws NumberFormatException, SQLException {
+	    ArrayList<Object> listaA = new ArrayList<>(); 
+	    
+	    Statement query = (Statement) con.createStatement();
+	    ResultSet result = (ResultSet) query.executeQuery("select * from Autorita;");
 	    while (result.next()) {
-	    	a.setMatricola(result.getString("Matricola"));
+	      Autorit‡ a = new Autorit‡(null, null, null, null, null);
 	      a.setNome(result.getString("Nome"));
 	      a.setCognome(result.getString("Cognome"));
+	      a.setMatricola(result.getString("Matricola"));
+	      a.setUsername(result.getString("username"));
 	      a.setPasword(result.getString("pasword"));
-	      if (a.getPasword().equals(pass)) {
-	        return true;
-	      }
+	      listaA.add(a);
 	    }
-	    return false;
+	    return listaA;
 	  }
 }
