@@ -2,6 +2,7 @@ package ServletGestioneAccount;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,8 @@ public class ServletRegistrazione extends HttpServlet{
 		  }else {
 			  u.registraAccount("autorità",nome, cognome, cofi_ma, username, pasword);
 		  }
+		  RequestDispatcher view = request.getRequestDispatcher("html/Login.html");
+		     view.forward(request, response);
 	  }
 	  
 	  protected void doPost(HttpServletRequest request, HttpServletResponse response) 

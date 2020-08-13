@@ -72,7 +72,51 @@ public class ImpGestioneUtente implements GestioneUtente{
 	}
 
 	@Override
-	public void modificaAccount(String Nome, String Cognome, String CodiceFiscale, 
+	public void modificaAccount(String tipo, String Nome, String Cognome, String id,
 			  String Username, String Pasword) throws IOException {
+		if (tipo.equals("utente")) {
+			Utente u = new Utente(Nome, Cognome, id, Username, Pasword);
+			FactoryDao fdao = new FactoryDao();
+		      ObjectDao o = fdao.getObject("Utente");
+		      try {
+		        o.modificaDati(u);
+		      } catch (SQLException e) {
+		        e.printStackTrace();
+		      }
+		}else {
+			Autorità a = new Autorità(Nome, Cognome, id, Username, Pasword);
+			FactoryDao fdao = new FactoryDao();
+		    ObjectDao o = fdao.getObject("Autorità");
+		      try {
+		        o.modificaDati(a);
+		      } catch (SQLException e) {
+		        e.printStackTrace();
+		      }
+		}
 	    }
+	
+	@Override
+	  public Object infoAccount(String username, String tipo) {
+		    if (tipo.equals("utente")) {
+		      Utente u = new Utente(null, null,null, username, null);
+		      FactoryDao fdao = new FactoryDao();
+		      ObjectDao o = fdao.getObject("Utente");
+		      try { 
+		        o.recuperaDati(u);
+		      } catch (SQLException e) {
+		        e.printStackTrace();
+		      }
+		      return u;
+		    } else {
+		    	Autorità a = new Autorità(null, null, null, username, null);
+			    FactoryDao fdao = new FactoryDao();
+			    ObjectDao o = fdao.getObject("Autorità");
+		      try {
+		        o.recuperaDati(a);
+		      } catch (SQLException e) {
+		        e.printStackTrace();
+		      }
+		      return a;
+		    }
+		  }
 }

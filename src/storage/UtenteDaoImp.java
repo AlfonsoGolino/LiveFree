@@ -34,9 +34,18 @@ public class UtenteDaoImp implements ObjectDao {
 
 	@Override
 	public void modificaDati(Object o) throws SQLException {
-		// TODO Auto-generated method stub
-		
-	}
+	    Utente u = (Utente) o;
+	    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("update Utente set "
+	        + "Nome "
+	        + "= ?, Cognome = ?,"
+	        + " username = ?, pasword = ? where CodiceFiscale = ?;");
+	    prepared.setString(1, u.getNome());
+	    prepared.setString(2, u.getCognome());
+	    prepared.setString(3, u.getUsername());
+	    prepared.setString(4, u.getPasword());
+	    prepared.setString(5, u.getCodiceFiscale());
+	    prepared.executeUpdate();
+	  }
 	  
 	@Override
 	  public boolean recuperaDati(Object o) throws SQLException {

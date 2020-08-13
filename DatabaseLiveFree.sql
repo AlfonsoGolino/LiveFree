@@ -10,7 +10,7 @@ username varchar(20) not null,
 pasword varchar(10) not null
 );
 
-Create table Autorità(
+Create table Autorita(
 Matricola int(5) primary key,
 Nome varchar(20) not null,
 Cognome varchar(20) not null, 
@@ -26,7 +26,7 @@ DroneInviato boolean not null,
 matricola int(5),
 codiceFiscale char(16),
 foreign key(matricola)
-	references Autorità(Matricola)
+	references Autorita(Matricola)
 	on update cascade
 	on delete restrict,
 foreign key(codiceFiscale)

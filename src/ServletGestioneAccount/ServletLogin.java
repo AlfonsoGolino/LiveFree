@@ -47,11 +47,11 @@ public class ServletLogin extends HttpServlet {
 				 RequestDispatcher view = request.getRequestDispatcher("html/Login.html");
 			     view.forward(request, response);
 			 }
-		 }else {
+		 }else if(tipo.equals("autorita")) {
 			 Autorità a = (Autorità) u.loginAccount(username, pasword, tipo);
 			 request.setAttribute("Nome", a.getNome());
 			 request.setAttribute("Cognome", a.getCognome());
-			 request.setAttribute("Codice Fiscale", a.getMatricola());
+			 request.setAttribute("Matricola", a.getMatricola());
 			 if(a.getUsername() != null) {
 				 RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 			     view.forward(request, response);
