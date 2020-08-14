@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import GestioneUtente.GestioneUtente;
-import GestioneUtente.ImpGestioneUtente;
+import GestioneIterazioneUtenteAutorità.GestioneIterazioneUtenteAutorità;
+import GestioneIterazioneUtenteAutorità.ImpGestioneIterazioneUtenteAutorità;
 
 @WebServlet(name="/FormSelezionaAutorità.html", urlPatterns = {"/FormSelezionaAutorità.html"})
 public class FormSelezionaAuotrità extends HttpServlet{
@@ -22,8 +22,8 @@ public class FormSelezionaAuotrità extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 		      throws ServletException, IOException {
-		GestioneUtente u = new ImpGestioneUtente();
-		request.setAttribute("Lista Autorita", u.RecuperaID("Autorità"));
+		GestioneIterazioneUtenteAutorità i = new ImpGestioneIterazioneUtenteAutorità();
+		request.setAttribute("Lista Autorita", i.RecuperaID("Autorità"));
 		RequestDispatcher view = request.getRequestDispatcher("jsp/SelezionaAutorità.jsp");
         view.forward(request, response);
 	}

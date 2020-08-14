@@ -16,6 +16,5 @@ public interface GestioneUtente {
 		  String Username, String Pasword) throws IOException;
   
   public Object infoAccount(String username, String tipo);
-  
-  public  List<String>  RecuperaID(String tipo);
+ 
 }

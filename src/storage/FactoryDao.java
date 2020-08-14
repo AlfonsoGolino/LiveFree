@@ -1,5 +1,6 @@
 package storage;
 
+
 /**
  * La classe FactoryDAO costruisce un oggetto di tipo ObjectDAO.
  * Questa classe permette di creare un oggetto di tipo ObjectDAO specificando 
@@ -22,6 +23,9 @@ public class FactoryDao {
       case "Autorit‡" :
           o = new Autorit‡DaoImp();
           break;
+      case "Segnalazione" :
+    	  o = new SegnalazioneDaoImp();
+    	  break;
       default:
         break;
     }
