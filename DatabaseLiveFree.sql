@@ -22,7 +22,7 @@ Create table Segnalazione(
 IDSegnalazione varchar(20) primary key,
 Indirizzo varchar(20) not null,
 Foto varchar(20)not null,
-DroneInviato boolean not null,
+DroneInviato boolean,
 matricola char(16),
 codiceFiscale char(16),
 foreign key(matricola)

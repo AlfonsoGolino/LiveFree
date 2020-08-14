@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ClassiComuni.Autorità;
+import ClassiComuni.Segnalazione;
 import ClassiComuni.Utente;
 import storage.FactoryDao;
 import storage.ObjectDao;
@@ -53,9 +54,17 @@ public class ImpGestioneIterazioneUtenteAutorità implements GestioneIterazioneUt
 	}
 
 	@Override
-	public void InserisciSegnalazione(String indirizzo, String foto, boolean droneInviato, 
+	public void InserisciSegnalazione(String indirizzo, String foto, 
 			String matricola, String codiceFiscale) {
-		
-		
+		   int id = (int)(Math.random()*100000);
+		   Segnalazione s = new Segnalazione(id, indirizzo, foto, 
+				   codiceFiscale, matricola);
+		   FactoryDao fd = new FactoryDao();
+		   ObjectDao o = fd.getObject("Segnalazione");
+		    try {
+		        o.inserisciDati(s);
+		      } catch (SQLException e) {
+		        e.printStackTrace();
+		      } 
 	}
 }

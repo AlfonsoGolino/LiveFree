@@ -4,17 +4,18 @@ public class Segnalazione {
 private int idSegnalazione;
 private String indirizzo;
 private String foto;
+private boolean droneInviato;
 private String codiceFiscale;
 private String matricola;
 
-	public Segnalazione(int idSegnalazione, String indirizzo, String foto, String codiceFiscale, 
-			String matricola) {
-		this.idSegnalazione = idSegnalazione;
-		this.indirizzo = indirizzo;
-		this.foto = foto;
-		this.codiceFiscale = codiceFiscale;
-		this.matricola = matricola;
-	}
+public Segnalazione(int idSegnalazione, String indirizzo, String foto, String codiceFiscale, 
+		String matricola) {
+	this.idSegnalazione = idSegnalazione;
+	this.indirizzo = indirizzo;
+	this.foto = foto;
+	this.codiceFiscale = codiceFiscale;
+	this.matricola = matricola;
+}
 
 	public int getIdSegnalazione() {
 		return idSegnalazione;
@@ -54,5 +55,13 @@ private String matricola;
 
 	public void setMatricola(String matricola) {
 		this.matricola = matricola;
+	}
+
+	public boolean isDroneInviato() {
+		return droneInviato;
+	}
+
+	public void setDroneInviato(boolean droneInviato) {
+		this.droneInviato = droneInviato;
 	}
 }

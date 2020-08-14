@@ -17,6 +17,7 @@
 <strong>Matricola: </strong><input type="text" name="Matricola"  value="<%=matricola%>" readonly></br>
 <strong>Indirizzo:</strong> <input type="text" name="Indirizzo"></br>
 <strong>Foto:</strong> <input type="text" name="Foto"></br>
+<input type="submit" value="Invia">
 </form>
 </body>
 </html>

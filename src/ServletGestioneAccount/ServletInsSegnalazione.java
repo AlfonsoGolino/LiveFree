@@ -34,7 +34,7 @@ public class ServletInsSegnalazione extends HttpServlet{
 		String matricola = request.getParameter("Matricola");
 		String indirizzo = request.getParameter("Indirizzo");
 	    String foto = request.getParameter("Foto");
-		i.InserisciSegnalazione(indirizzo, foto, false, matricola, user.getCodiceFiscale());
+		i.InserisciSegnalazione(indirizzo, foto, matricola, user.getCodiceFiscale());
 		RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 	    view.forward(request, response);
 	}
