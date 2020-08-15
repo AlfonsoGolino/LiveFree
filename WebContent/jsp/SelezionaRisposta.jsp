@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% String indirizzo = request.getParameter("Indirizzo");
-String foto = request.getParameter("Foto");
-String codiceFiscale = request.getParameter("codiceFiscale");
-String id = request.getParameter("ID");
+<% String indirizzo = (String)request.getAttribute("Indirizzo");
+String foto = (String)request.getAttribute("Foto");
+String codiceFiscale = (String)request.getAttribute("codiceFiscale");
+int id = (Integer)request.getAttribute("ID");
 %>
 
 <%=indirizzo%>

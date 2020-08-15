@@ -35,9 +35,8 @@ public class SegnalazioneDaoImp implements ObjectDao{
 	public void modificaDati(Object o) throws SQLException {
 	    Segnalazione s = (Segnalazione) o;
 	    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("update Segnalazione set "
-	        + "DroneInviato "
-	        + "= ?, Visualizzato = ?,"
-	        + " where IDSegnalazione = ?;");
+		        + "DroneInviato "
+		        + "= ?, Visualizzato = ? where IDSegnalazione = ?;");
 	    prepared.setBoolean(1, s.isDroneInviato());
 	    prepared.setBoolean(2, s.isVisualizzato());
 	    prepared.setInt(3, s.getIdSegnalazione());
@@ -45,7 +44,7 @@ public class SegnalazioneDaoImp implements ObjectDao{
 	}
 
 	@Override
-	public boolean recuperaDati(Object o) throws SQLException {
+	public Object recuperaDati(Object o) throws SQLException {
 		Segnalazione s = (Segnalazione) o;
 		int id = s.getIdSegnalazione();
 		 PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from Segnalazione "
@@ -57,7 +56,7 @@ public class SegnalazioneDaoImp implements ObjectDao{
 		    	s.setFoto(result.getString("Foto"));
 		    	s.setCodiceFiscale(result.getString("codiceFiscale"));
 		    }
-		return true;
+		return s;
 	}
 
 	@Override
@@ -71,6 +70,7 @@ public class SegnalazioneDaoImp implements ObjectDao{
 	      s.setIdSegnalazione(result.getInt("IDSegnalazione"));
 	      s.setIndirizzo(result.getString("Indirizzo"));
 	      s.setFoto(result.getString("Foto"));
+	      s.setVisualizzato(result.getBoolean("Visualizzato"));
 	      s.setMatricola(result.getString("matricola"));
 	      s.setCodiceFiscale(result.getString("codiceFiscale"));
 	      listaS.add(s);

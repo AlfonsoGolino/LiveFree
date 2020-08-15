@@ -121,7 +121,7 @@ public class ImpGestioneIterazioneUtenteAutorità implements GestioneIterazioneUt
 		 ObjectDao o = fd.getObject("Segnalazione");
 		 Segnalazione s = new Segnalazione(id,null, null,null, false, null);
 		 try {
-			o.recuperaDati(s);
+			s = (Segnalazione) o.recuperaDati(s);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

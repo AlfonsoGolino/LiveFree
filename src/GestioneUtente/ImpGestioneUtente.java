@@ -2,8 +2,6 @@ package GestioneUtente;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import ClassiComuni.Utente;
 import ClassiComuni.Autorità;
@@ -20,7 +18,7 @@ public class ImpGestioneUtente implements GestioneUtente{
 		      FactoryDao fdao = new FactoryDao();
 		      ObjectDao o = fdao.getObject("Utente");
 		      try {
-		        accesso = o.recuperaDati(u);
+		        accesso =(boolean) o.recuperaDati(u);
 		      } catch (SQLException e) {
 		        e.printStackTrace();
 		      }
@@ -35,7 +33,7 @@ public class ImpGestioneUtente implements GestioneUtente{
 		      FactoryDao fdao = new FactoryDao();
 		      ObjectDao o = fdao.getObject("Autorità");
 		      try {
-		        accesso = o.recuperaDati(a);
+		        accesso =(boolean) o.recuperaDati(a);
 		      } catch (SQLException e) {
 		        e.printStackTrace();
 		      }

@@ -48,7 +48,7 @@ public class Autorit‡DaoImp implements ObjectDao {
 	  }
 	
 	@Override
-	  public boolean recuperaDati(Object o) throws SQLException {
+	  public Object recuperaDati(Object o) throws SQLException {
 		Autorit‡ a = (Autorit‡) o;
 		String pass = a.getPasword();
 	    

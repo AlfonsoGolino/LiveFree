@@ -49,7 +49,7 @@ public class UtenteDaoImp implements ObjectDao {
 	  }
 	  
 	@Override
-	  public boolean recuperaDati(Object o) throws SQLException {
+	  public Object recuperaDati(Object o) throws SQLException {
 		Utente u = (Utente) o;
 		String pass = u.getPasword();
 	    
