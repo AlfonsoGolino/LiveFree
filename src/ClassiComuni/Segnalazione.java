@@ -5,14 +5,16 @@ private int idSegnalazione;
 private String indirizzo;
 private String foto;
 private boolean droneInviato;
+private boolean visualizzato;
 private String codiceFiscale;
 private String matricola;
 
 public Segnalazione(int idSegnalazione, String indirizzo, String foto, String codiceFiscale, 
-		String matricola) {
+		boolean visualizzato, String matricola) {
 	this.idSegnalazione = idSegnalazione;
 	this.indirizzo = indirizzo;
 	this.foto = foto;
+	this.visualizzato = visualizzato;
 	this.codiceFiscale = codiceFiscale;
 	this.matricola = matricola;
 }
@@ -63,5 +65,13 @@ public Segnalazione(int idSegnalazione, String indirizzo, String foto, String co
 
 	public void setDroneInviato(boolean droneInviato) {
 		this.droneInviato = droneInviato;
+	}
+
+	public boolean isVisualizzato() {
+		return visualizzato;
+	}
+
+	public void setVisualizzato(boolean visualizzato) {
+		this.visualizzato = visualizzato;
 	}
 }

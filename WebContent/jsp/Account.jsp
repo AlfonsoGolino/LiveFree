@@ -26,6 +26,23 @@ Account Autorità
 <a  href="FormModifca.html" title="Modifica Account">
 <button type="button">Modifica Account</button>
 </a>
-<%} %>
+<a  href="SegnalazioninonViste" title="Segnalazioni non Viste">
+<button type="button">Segnalazione non Viste</button>
+</a>
+<%if(session.getAttribute("vis").equals("si")){ %>
+<button onclick="myFunction()">Notifiche</button>
+<%}else{%>
+<button onclick="myFunction1()">Notifiche</button>
+<%}
+} %>
+<script type="text/javascript">
+function myFunction() {
+	alert("Ci sono nuove Segnalazioni");
+}
+
+function myFunction1() {
+	alert("Non ci sono nuove Segnalazioni");
+}
+</script>
 </body>
 </html>

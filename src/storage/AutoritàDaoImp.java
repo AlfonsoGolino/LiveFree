@@ -21,7 +21,6 @@ public class Autorit‡DaoImp implements ObjectDao {
 	@Override
 	public void inserisciDati(Object o) throws SQLException {
 	    Autorit‡ a = (Autorit‡) o;
-
 	    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into Autorita("
 	        + "Matricola,Nome,"
 	        + "Cognome,username,pasword) values (?,?,?,?,?);");

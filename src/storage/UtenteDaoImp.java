@@ -22,7 +22,6 @@ public class UtenteDaoImp implements ObjectDao {
 	@Override
 	public void inserisciDati(Object o) throws SQLException {
 	    Utente u = (Utente) o;
-
 	    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into Utente("
 	        + "Nome,Cognome,"
 	        + "CodiceFiscale,username,pasword) values (?,?,?,?,?);");

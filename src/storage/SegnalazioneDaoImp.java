@@ -2,7 +2,9 @@ package storage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import ClassiComuni.Segnalazione;
@@ -19,31 +21,60 @@ public class SegnalazioneDaoImp implements ObjectDao{
 		Segnalazione s = (Segnalazione) o;
 		 PreparedStatement prepared = (PreparedStatement) con.prepareStatement("insert into Segnalazione("
 			        + "IDSegnalazione,Indirizzo,"
-			        + "Foto,matricola,codiceFiscale) values (?,?,?,?,?);");
+			        + "Foto,Visualizzato,matricola,codiceFiscale) values (?,?,?,?,?,?);");
 			    prepared.setInt(1, s.getIdSegnalazione());
 			    prepared.setString(2, s.getIndirizzo());
 			    prepared.setString(3, s.getFoto());
-			    prepared.setString(4, s.getMatricola());
-			    prepared.setString(5, s.getCodiceFiscale());
+			    prepared.setBoolean(4, s.isVisualizzato());
+			    prepared.setString(5, s.getMatricola());
+			    prepared.setString(6, s.getCodiceFiscale());
 			    prepared.executeUpdate();
 	}
 
 	@Override
 	public void modificaDati(Object o) throws SQLException {
-		// TODO Auto-generated method stub
-		
+	    Segnalazione s = (Segnalazione) o;
+	    PreparedStatement prepared = (PreparedStatement) con.prepareStatement("update Segnalazione set "
+	        + "DroneInviato "
+	        + "= ?, Visualizzato = ?,"
+	        + " where IDSegnalazione = ?;");
+	    prepared.setBoolean(1, s.isDroneInviato());
+	    prepared.setBoolean(2, s.isVisualizzato());
+	    prepared.setInt(3, s.getIdSegnalazione());
+	    prepared.executeUpdate();
 	}
 
 	@Override
 	public boolean recuperaDati(Object o) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		Segnalazione s = (Segnalazione) o;
+		int id = s.getIdSegnalazione();
+		 PreparedStatement prepared = (PreparedStatement) con.prepareStatement("select * from Segnalazione "
+			        + "where IDSegnalazione = ?;");
+		 prepared.setInt(1, id);
+		 ResultSet result = (ResultSet) prepared.executeQuery();
+		    while (result.next()) {
+		    	s.setIndirizzo(result.getString("Indirizzo"));
+		    	s.setFoto(result.getString("Foto"));
+		    	s.setCodiceFiscale(result.getString("codiceFiscale"));
+		    }
+		return true;
 	}
 
 	@Override
 	public ArrayList<Object> recuperaTutto() throws NumberFormatException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+		ArrayList<Object> listaS = new ArrayList<>(); 
+	    
+	    Statement query = (Statement) con.createStatement();
+	    ResultSet result = (ResultSet) query.executeQuery("select * from Segnalazione;");
+	    while (result.next()) {
+	      Segnalazione s = new Segnalazione(0, null, null, null,false,null);
+	      s.setIdSegnalazione(result.getInt("IDSegnalazione"));
+	      s.setIndirizzo(result.getString("Indirizzo"));
+	      s.setFoto(result.getString("Foto"));
+	      s.setMatricola(result.getString("matricola"));
+	      s.setCodiceFiscale(result.getString("codiceFiscale"));
+	      listaS.add(s);
+	    }
+	    return listaS;
+	  }
 }

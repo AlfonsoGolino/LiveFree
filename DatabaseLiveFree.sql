@@ -23,6 +23,7 @@ IDSegnalazione varchar(20) primary key,
 Indirizzo varchar(20) not null,
 Foto varchar(20)not null,
 DroneInviato boolean,
+Visualizzato boolean not null,
 matricola char(16),
 codiceFiscale char(16),
 foreign key(matricola)

@@ -12,7 +12,7 @@ public class SingletonDataBase {
 	    con = null;
 	    try {
 	      Class.forName("com.mysql.jdbc.Driver");
-	      String url = "jdbc:mysql://localhost:3306/livefree?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL = false";
+	      String url = "jdbc:mysql://localhost:3306/livefree?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	      String username = "root";
 	      String pwd = "";
 	      con = (Connection) DriverManager.getConnection(url,username,pwd);

@@ -61,7 +61,7 @@ public class ImpGestioneUtente implements GestioneUtente{
 	      } catch (SQLException e) {
 	        e.printStackTrace();
 	      }
-		 }else {
+		 }else if(tipo.equals("autorita")) {
 			 Autorità s = new Autorità(Nome, Cognome, cofi_ma, Username, Pasword);
 		      FactoryDao fdao = new FactoryDao();
 		      ObjectDao o = fdao.getObject("Autorità");

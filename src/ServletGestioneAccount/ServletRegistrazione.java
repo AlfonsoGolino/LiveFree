@@ -31,8 +31,8 @@ public class ServletRegistrazione extends HttpServlet{
 		  GestioneUtente u = new ImpGestioneUtente();
 		  if(tipo.equals("utente")) {
 		  u.registraAccount("utente",nome, cognome, cofi_ma, username, pasword);
-		  }else {
-			  u.registraAccount("autorità",nome, cognome, cofi_ma, username, pasword);
+		  }else if(tipo.equals("autorita")){
+			  u.registraAccount("autorita",nome, cognome, cofi_ma, username, pasword);
 		  }
 		  RequestDispatcher view = request.getRequestDispatcher("html/Login.html");
 		     view.forward(request, response);

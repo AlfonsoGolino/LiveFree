@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import ClassiComuni.Autorità;
 import ClassiComuni.Utente;
+import GestioneIterazioneUtenteAutorità.GestioneIterazioneUtenteAutorità;
+import GestioneIterazioneUtenteAutorità.ImpGestioneIterazioneUtenteAutorità;
 import GestioneUtente.GestioneUtente;
 import GestioneUtente.ImpGestioneUtente;
 
@@ -53,6 +55,13 @@ public class ServletLogin extends HttpServlet {
 			 request.setAttribute("Cognome", a.getCognome());
 			 request.setAttribute("Matricola", a.getMatricola());
 			 if(a.getUsername() != null) {
+				 GestioneIterazioneUtenteAutorità i = new ImpGestioneIterazioneUtenteAutorità();
+				 boolean vis = i.SegnalazioneDaVisualizzare(tipo);
+				 if (vis == true) {
+				   sessione.setAttribute("vis", "si");
+				 } else {
+				   sessione.setAttribute("vis", "no");
+				 }
 				 RequestDispatcher view = request.getRequestDispatcher("jsp/Account.jsp");
 			     view.forward(request, response);
 			 }else {
